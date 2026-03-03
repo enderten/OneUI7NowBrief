@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar - One UI 8.5 Style</title>
+
+<style>
+body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background:#f6f6f6;
+    color:#111;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px;
+    font-weight:600;
+    font-size:22px;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu{
+    font-size:24px;
+    cursor:pointer;
+}
+
+.header-icons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.icon{
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+    background:#ff5252;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:12px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.close-btn:hover{
+    background:#e04848;
+}
+
+/* DAYS ROW */
+.days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    text-align:center;
+    font-weight:500;
+    padding:0 10px;
+    margin-bottom:10px;
+    color:#666;
+}
+
+.days div:last-child{
+    color:#d32f2f;
+}
+
+/* GRID */
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    grid-auto-rows:110px;
+    padding:0 10px 100px;
+}
+
+.day{
+    background:white;
+    margin:4px;
+    border-radius:20px;
+    padding:8px;
+    font-size:16px;
+    position:relative;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.day:hover{
+    background:#ececec;
+}
+
+.day.fade{
+    color:#c9c9c9;
+    background:#f0f0f0;
+}
+
+.day.sunday{
+    color:#d32f2f;
+}
+
+.day.selected{
+    border:2px solid #9e9e9e;
+    background:#eaf3f0;
+}
+
+.event{
+    background:#8bc7a6;
+    padding:4px 6px;
+    border-radius:8px;
+    font-size:13px;
+    margin-top:6px;
+    display:inline-block;
+}
+
+/* FLOAT BUTTON */
+.fab{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:white;
+    padding:18px 40px;
+    border-radius:40px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    font-size:18px;
+    width:320px;
+}
+
+.fab span{
+    color:#9e9e9e;
+}
+
+.plus{
+    font-size:28px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="header-left">
+        <div class="menu">☰</div>
+        <div>JAN 2026</div>
+    </div>
+
+    <div class="header-icons">
+        <div class="icon">⌕
+</div>
+        <div class="icon">5</div>
+        <button class="close-btn" onclick="location.href='index.html'">X</button>
+    </div>
+</div>
+
+<div class="days">
+    <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+</div>
+
+<div class="calendar" id="calendar">
+
+    <!-- Previous month -->
+    <div class="day fade">29</div>
+    <div class="day fade">30</div>
+    <div class="day fade">31</div>
+
+    <!-- Week 1 -->
+    <div class="day selected" onclick="selectDay(this)">1
+        <div class="event">New Year's Day</div>
+    </div>
+    <div class="day" onclick="selectDay(this)">2</div>
+    <div class="day" onclick="selectDay(this)">3
+        <div class="event">Hazarat Ali's Birth</div>
+    </div>
+    <div class="day sunday" onclick="selectDay(this)">4</div>
+
+    <!-- Week 2 -->
+    <div class="day" onclick="selectDay(this)">5</div>
+    <div class="day" onclick="selectDay(this)">6</div>
+    <div class="day" onclick="selectDay(this)">7</div>
+    <div class="day" onclick="selectDay(this)">8</div>
+    <div class="day" onclick="selectDay(this)">9</div>
+    <div class="day" onclick="selectDay(this)">10</div>
+    <div class="day sunday" onclick="selectDay(this)">11</div>
+
+    <!-- Week 3 -->
+    <div class="day" onclick="selectDay(this)">12</div>
+    <div class="day" onclick="selectDay(this)">13</div>
+    <div class="day" onclick="selectDay(this)">14
+        <div class="event">Makar Sankranti</div>
+        <div class="event">Pongal</div>
+    </div>
+    <div class="day" onclick="selectDay(this)">15</div>
+    <div class="day" onclick="selectDay(this)">16</div>
+    <div class="day" onclick="selectDay(this)">17</div>
+    <div class="day sunday" onclick="selectDay(this)">18</div>
+
+    <!-- Week 4 -->
+    <div class="day" onclick="selectDay(this)">19</div>
+    <div class="day" onclick="selectDay(this)">20</div>
+    <div class="day" onclick="selectDay(this)">21</div>
+    <div class="day" onclick="selectDay(this)">22</div>
+    <div class="day" onclick="selectDay(this)">23
+        <div class="event">Vasant Panchami</div>
+    </div>
+    <div class="day" onclick="selectDay(this)">24</div>
+    <div class="day sunday" onclick="selectDay(this)">25</div>
+
+    <!-- Week 5 -->
+    <div class="day" onclick="selectDay(this)">26
+        <div class="event">Republic Day</div>
+    </div>
+    <div class="day" onclick="selectDay(this)">27</div>
+    <div class="day" onclick="selectDay(this)">28</div>
+    <div class="day" onclick="selectDay(this)">29</div>
+    <div class="day" onclick="selectDay(this)">30</div>
+    <div class="day" onclick="selectDay(this)">31</div>
+    <div class="day fade sunday">1</div>
+
+</div>
+
+<div class="fab">
+    <span>Add on 1 Jan</span>
+    <div class="plus">+</div>
+</div>
+
+<script>
+function selectDay(el){
+    document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+    el.classList.add('selected');
+
+    const dayNumber = el.childNodes[0].nodeValue.trim();
+    document.querySelector('.fab span').innerText = "Add on " + dayNumber + " Jan";
+}
+</script>
+
+</body>
+</html>

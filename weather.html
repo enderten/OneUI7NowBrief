@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung Weather One UI 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.12);
+            --blur: blur(20px);
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Inter', sans-serif;
+            background: url('https://images.unsplash.com/photo-1562679039-ce58fac9e3bc?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.15); z-index: 1;
+        }
+
+        /* --- BOTÓN CERRAR --- */
+        .close-btn {
+            position: fixed; top: 20px; right: 20px;
+            width: 40px; height: 40px;
+            background: var(--glass);
+            backdrop-filter: var(--blur);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; color: white; font-size: 24px;
+            z-index: 100; border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .weather-content {
+            position: relative; z-index: 10;
+            padding: 60px 30px 20px 30px;
+        }
+
+        .city { font-size: 26px; font-weight: 400; margin: 0; }
+        .temp-container { display: flex; align-items: flex-start; margin-top: 5px; }
+        .temp-number { font-size: 140px; font-weight: 100; line-height: 0.8; letter-spacing: -6px; }
+        .degree { font-size: 60px; font-weight: 200; margin-top: 10px; }
+        .description { font-size: 20px; font-weight: 300; margin-top: 15px; opacity: 0.9; }
+
+        /* --- WIDGETS --- */
+        .widgets-grid {
+            position: relative; z-index: 10;
+            padding: 0 20px 40px 20px;
+            display: flex; flex-direction: column; gap: 15px;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: var(--blur);
+            border-radius: 28px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Pronóstico */
+        .forecast-row {
+            display: flex; justify-content: space-between;
+            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .forecast-row:last-child { border: none; }
+        .day { font-weight: 400; width: 10px; }
+        .forecast-temp { font-weight: 300; text-align: right; }
+
+        /* Polen */
+        .polen-info {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .polen-bar {
+            width: 100%; height: 6px; background: rgba(255,255,255,0.2);
+            border-radius: 10px; margin-top: 10px; overflow: hidden;
+        }
+        .polen-fill {
+            width: 35%; height: 100%; background: #90ee90; /* Nivel bajo/medio */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <a href="index.html" class="close-btn">×</a>
+
+    <div class="weather-content">
+        <p class="city">Asunción</p>
+        <div class="temp-container">
+            <span class="temp-number">18</span>
+            <span class="degree">°</span>
+        </div>
+        <p class="description">Despejado</p>
+    </div>
+
+    <div class="widgets-grid">
+        <div class="glass-card">
+            <div class="polen-info">
+                <span style="font-weight: 500;">Nivel de polen</span>
+                <span style="opacity: 0.8;">Bajo</span>
+            </div>
+            <div class="polen-bar"><div class="polen-fill"></div></div>
+            <p style="font-size: 13px; margin: 8px 0 0 0; opacity: 0.7;">El polen de los árboles es bajo en tu zona.</p>
+        </div>
+
+        <div class="glass-card">
+            <p style="margin: 0 0 15px 0; font-weight: 500; opacity: 0.8;">Pronóstico de 6 días</p>
+            <div class="forecast-row">
+                <span class="day">Hoy</span>
+                <span>☀️</span>
+                <span class="forecast-temp">24° / 16°</span>
+            </div>
+            <div class="forecast-row">
+                <span class="day">Mar</span>
+                <span>☀️</span>
+                <span class="forecast-temp">26° / 17°</span>
+            </div>
+            <div class="forecast-row">
+                <span class="day">Mié</span>
+                <span>⛅</span>
+                <span class="forecast-temp">25° / 18°</span>
+            </div>
+            <div class="forecast-row">
+                <span class="day">Jue</span>
+                <span>🌧️</span>
+                <span class="forecast-temp">21° / 15°</span>
+            </div>
+            <div class="forecast-row">
+                <span class="day">Vie</span>
+                <span>⛅</span>
+                <span class="forecast-temp">23° / 16°</span>
+            </div>
+            <div class="forecast-row">
+                <span class="day">Sáb</span>
+                <span>☀️</span>
+                <span class="forecast-temp">29° / 19°</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

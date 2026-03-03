@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samsung Health</title>
+
+<style>
+body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:#f4f4f4;
+    color:#111;
+}
+
+/* HEADER */
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px;
+    font-size:20px;
+    font-weight:600;
+    background:white;
+}
+
+.close{
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* MAIN */
+.container{
+    padding:20px;
+}
+
+.distance{
+    font-size:32px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    border-radius:28px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.05);
+}
+
+.card h3{
+    font-size:16px;
+    margin:0 0 15px 0;
+    font-weight:600;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.metric{
+    font-size:14px;
+}
+
+.metric span{
+    display:block;
+    font-size:18px;
+    font-weight:600;
+    margin-top:4px;
+}
+
+/* COLORS */
+.blue{ color:#2962ff; }
+.red{ color:#e53935; }
+.green{ color:#00a152; }
+.orange{ color:#f9a825; }
+
+/* GRAPH PLACEHOLDER */
+.graph{
+    height:120px;
+    background:linear-gradient(to top, rgba(41,98,255,0.1), transparent);
+    border-radius:20px;
+    margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div>Samsung Health</div>
+    <div class="close" onclick="location.href='index.html'">✕</div>
+</div>
+
+<div class="container">
+
+    <div class="distance">2.85 km</div>
+
+    <div class="card">
+        <h3>Detalles de entrenamiento</h3>
+
+        <div class="grid">
+            <div class="metric">
+                Duración
+                <span class="orange">32:04</span>
+            </div>
+
+            <div class="metric">
+                Ritmo medio
+                <span class="blue">11'13"/km</span>
+            </div>
+
+            <div class="metric">
+                Frecuencia cardiaca
+                <span class="red">133 bpm</span>
+            </div>
+
+            <div class="metric">
+                Calorías
+                <span class="red">184 Cal</span>
+            </div>
+
+            <div class="metric">
+                Cadencia
+                <span class="green">118 spm</span>
+            </div>
+
+            <div class="metric">
+                Pasos
+                <span class="green">3,801</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Gráfico</h3>
+        <div class="graph"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One UI 7 - Now Brief</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.12);
+            --glass-active: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --text-main: #ffffff;
+            --radius-oneui: 30px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTztOmltAJh9MZqx_P6mskugy8VNJaobYalpw&s');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .background-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.05) 100%);
+            background-size: 200% 200%;
+            animation: moveGradient 10s ease infinite;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .greeting-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 8px 10px;
+        }
+
+        .ai-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .greeting-text h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .widget {
+            background: var(--glass);
+            backdrop-filter: blur(35px) saturate(160%);
+            -webkit-backdrop-filter: blur(35px) saturate(160%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-oneui);
+            padding: 22px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), background 0.2s ease;
+            cursor: pointer;
+        }
+
+        .widget:active {
+            transform: scale(0.96);
+            background: var(--glass-active);
+        }
+
+        .weather-widget {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .weather-info .temp {
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+        .weather-info .desc {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .weather-icon {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #ffffff;
+            width: 72%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper">
+        <div class="background-overlay"></div>
+    </div>
+
+    <div class="container">
+        <header class="greeting-container">
+            <img src="https://cellucity.co.za/wp-content/uploads/2024/01/Stars-only.png" class="ai-icon">
+            <div class="greeting-text">
+                <h1 id="greet">Buenos días</h1>
+            </div>
+        </header>
+
+        <div class="widget weather-widget" onclick="location.href='weather.html'">
+            <div class="weather-info">
+                <div style="font-size: 14px; opacity: 0.6; margin-bottom: 4px;">Clima</div>
+                <div class="temp">24°</div>
+                <div class="desc">Asunción • Despejado</div>
+            </div>
+            <img src="https://downloadr2.apkmirror.com/wp-content/uploads/2024/12/38/676ed91c8e506_com.sec.android.daemonapp-384x384.png" class="weather-icon">
+        </div>
+
+        <!-- Samsung Health CORREGIDO -->
+        <div class="widget activity-widget" onclick="location.href='health.html'">
+            <div style="font-size: 14px; opacity: 0.6; margin-bottom: 4px;">Samsung Health</div>
+            <div class="stats">
+                <span>Pasos</span>
+                <span>7,210</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="widget" onclick="location.href='calendar.html'">
+            <div style="font-size: 14px; opacity: 0.6; margin-bottom: 4px;">Calendario</div>
+            <div style="font-size: 16px; font-weight: 500;">Reunión de One UI 7</div>
+            <div style="font-size: 14px; color: #a5d6ff; margin-top: 6px;">En 10 minutos</div>
+        </div>
+    </div>
+
+    <script>
+        const hour = new Date().getHours();
+        const greet = document.getElementById('greet');
+        if (hour < 12) greet.innerText = "Buenos días";
+        else if (hour < 19) greet.innerText = "Buenas tardes";
+        else greet.innerText = "Buenas noches";
+    </script>
+</body>
+</html>
